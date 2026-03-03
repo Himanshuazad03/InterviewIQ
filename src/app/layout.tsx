@@ -1,0 +1,41 @@
+import type { Metadata } from "next";
+import { Poppins, DM_Sans } from "next/font/google";
+import "./globals.css";
+import {Header} from "@/components/Header";
+import {Footer} from "@/components/Footer";
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+export const metadata: Metadata = {
+  title: "InterviewIQ | AI-Powered Interviews",
+  description: "Master Interviews. Track Progress. Get Hired. AI-driven structured evaluation.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="dark scroll-smooth">
+      <body
+        className={`${dmSans.className} ${poppins.variable} ${dmSans.variable} antialiased bg-[#0B0B0F] text-[#E5E7EB] selection:bg-[#1F2937]`}
+      >
+        <Header />
+        {children}
+
+      </body>
+    </html>
+  );
+}
+
