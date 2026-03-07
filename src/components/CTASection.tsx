@@ -1,26 +1,42 @@
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import Link from "next/link";
 
 export function CTASection() {
   return (
-    <section className="pt-24 pb-0 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-bl from-[#16161D] via-[#0B0B0F] to-[#050507] -z-20" />
-
-      <div className="w-full text-center">
+    <section className="py-12 md:py-20 bg-transparent border-t border-[#1F1F2A]">
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6 text-center">
         <Reveal>
-          <div className=" bg-[#111118]/80 p-10 md:p-16 backdrop-blur-md relative overflow-hidden">
-            <h2 className="text-3xl md:text-5xl font-heading font-semibold mb-6 bg-gradient-to-r from-[#9CA3AF] via-[#E5E7EB] to-[#94A3B8] bg-clip-text text-transparent pb-2">
-              Ready to Improve Your Interview Skills?
+          <div className="space-y-8">
+            <h2 className="text-2xl sm:text-4xl font-heading font-semibold text-[#E5E7EB] tracking-tight">
+              Ready to Improve Your Interview Performance?
             </h2>
-            <p className="text-lg md:text-xl text-[#9CA3AF] mb-10 max-w-2xl mx-auto">
-              Start practicing today and track measurable, structured improvement across technical and behavioral interviews.
+
+            {/* Tagline */}
+            <p className="text-[#9CA3AF] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+              Practice realistic interviews, receive AI-driven feedback, and
+              track your progress until you’re fully prepared for the real one.
             </p>
-            
-            <div className="flex flex-col items-center gap-4">
-              <Button size="lg" className="h-14 px-10 text-lg rounded-lg bg-[#1F2937] text-[#F9FAFB] hover:bg-[#374151] border-0 transition-colors w-full sm:w-auto">
-                Create Free Interview
-              </Button>
-              <p className="text-sm text-[#6B7280]">No credit card required.</p>
+
+            <div className="flex flex-row justify-center items-center gap-4 pt-4">
+              <Link href="/dashboard" className="sm:w-auto">
+                <Button
+                  size="lg"
+                  className="h-12 w-full px-4 md:px-8 rounded-lg bg-[#2D2D3A] text-[#F9FAFB] hover:bg-[#374151] border-0 transition-colors"
+                >
+                  Get Started for Free
+                </Button>
+              </Link>
+
+              <Link href="#how-it-works">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-12 w-full px-4 md:px-8 rounded-lg border border-[#374151] text-[#D1D5DB] hover:bg-[#111118] hover:text-[#F9FAFB] transition-colors bg-transparent"
+                >
+                  View Features
+                </Button>
+              </Link>
             </div>
           </div>
         </Reveal>

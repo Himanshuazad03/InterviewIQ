@@ -43,7 +43,7 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section id="faq" className="py-24 bg-gradient-to-br from-[#050507] via-[#0B0B0F] to-[#16161D] border-t border-[#1F1F2A]">
+    <section id="faq" className="py-24 bg-gradient-to-br from-[#050507] via-[#0B0B0F] to-[#16161D] ">
       <div className="container mx-auto max-w-5xl px-4 sm:px-6">
         <Reveal>
           <div className="text-center mb-16">

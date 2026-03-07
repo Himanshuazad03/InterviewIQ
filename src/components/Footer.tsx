@@ -3,20 +3,20 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0B0B0F] pt-16 pb-8">
+    <footer className="bg-[#0B0B0F] pt-8 md:pt-16 pb-4 md:pb-8">
       <div className="w-full">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-12">
+        <div className="flex items-center flex-col sm:flex-row justify-between items-center gap-10 mb-12">
           <div className="max-w-xs px-4">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center justify-center sm:justify-start gap-2 mb-4">
               <BrainCircuit className="h-5 w-5 text-[#E5E7EB]" />
               <span className="text-xl font-heading font-semibold tracking-tight text-[#E5E7EB]">InterviewIQ</span>
             </div>
-            <p className="text-sm text-[#9CA3AF] leading-relaxed">
+            <p className="text-sm text-center sm:text-left text-[#9CA3AF] leading-relaxed">
               AI-powered interview preparation platform designed for structured improvement.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 gap-12 sm:gap-24 px-4">
+          <div className="flex flex-row justify-between items-center gap-12 sm:gap-24 px-4">
             <div>
               <h4 className="text-[#E5E7EB] font-heading font-semibold mb-4 text-sm uppercase tracking-wider">Product</h4>
               <ul className="space-y-3 text-sm text-[#9CA3AF]">

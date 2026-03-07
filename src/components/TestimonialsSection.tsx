@@ -1,65 +1,82 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
 import { Reveal } from "./Reveal";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Aarav Sharma",
-    role: "Frontend Developer",
-    content: "Helped me identify gaps in React fundamentals before my final round interview.",
-    initials: "AS",
+    name: "Sarah Chen",
+    role: "Software Engineer @ TechCorp",
+    content:
+      "InterviewIQ completely changed how I prep for interviews. The AI feedback was spot-on and helped me identify my weak points in behavioral questions.",
+    rating: 5,
   },
   {
-    name: "Priya Patel",
-    role: "Computer Science Student",
-    content: "The performance tracking feature kept me accountable and consistent.",
-    initials: "PP",
+    name: "Michael Torres",
+    role: "Product Manager @ InnovateX",
+    content:
+      "The realistic scenarios and instant scoring gave me the confidence I needed. I landed my dream role after practicing here just for a week.",
+    rating: 5,
   },
   {
-    name: "Rahul Mehta",
-    role: "Backend Engineer",
-    content: "Clear scoring and structured feedback made preparation more focused.",
-    initials: "RM",
+    name: "Elena Rodriguez",
+    role: "Data Scientist @ DataFlow",
+    content:
+      "A game-changer! The rubric-based evaluation is incredibly detailed. It felt like I was doing a real mock interview with an industry expert.",
+    rating: 5,
   },
 ];
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-24 bg-gradient-to-bl from-[#16161D] via-[#0B0B0F] to-[#050507] border-t border-[#1F1F2A]">
-      <div className="container mx-auto max-w-7xl px-3 sm:px-4">
+    <section className="py-24 bg-gradient-to-bl from-[#16161D] via-[#0B0B0F] to-[#050507]">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold mb-4 bg-gradient-to-r from-[#9CA3AF] via-[#E5E7EB] to-[#94A3B8] bg-clip-text text-transparent pb-1">
-              Trusted by Developers & Students
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
+              Loved by Candidates
             </h2>
-            <p className="text-lg text-[#9CA3AF]">
-              Thousands of candidates use InterviewIQ to approach their interviews with confidence.
+            <p className="text-[#9CA3AF] text-lg max-w-2xl mx-auto">
+              See what our users have to say about their interview preparation
+              experience.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <Reveal key={index} delay={index * 0.1}>
-              <Card className="bg-[#111118] border-[#1F1F2A] h-full p-2 hover:border-slate-500 transition-colors rounded-xl shadow-none">
-                <CardContent className="pt-6">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Avatar className="h-12 w-12 border border-[#2D2D3A]">
-                      <AvatarFallback className="bg-[#1F2937] text-[#E5E7EB] font-medium">
-                        {testimonial.initials}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h4 className="font-heading font-semibold text-[#E5E7EB]">{testimonial.name}</h4>
-                      <p className="text-sm text-[#6B7280]">{testimonial.role}</p>
-                    </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <div className="h-full p-8 rounded-2xl bg-[#0B0B0F] border border-[#1F1F2A] hover:border-[#374151] transition-colors duration-300 relative group flex flex-col">
+                {/* Subtle hover gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
+                {/* Stars */}
+                <div className="flex items-center gap-1 mb-6">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]"
+                      strokeWidth={1}
+                    />
+                  ))}
+                </div>
+
+                {/* Content */}
+                <p className="text-[#D1D5DB] text-base leading-relaxed mb-8 flex-1">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Profile */}
+                <div className="flex items-center gap-4 mt-auto pt-6 border-t border-[#1F1F2A]/50">
+                  <div className="w-10 h-10 rounded-full bg-[#1F1F2A] flex items-center justify-center text-[#E5E7EB] font-medium shrink-0">
+                    {testimonial.name.charAt(0)}
                   </div>
-                  <blockquote className="text-[#9CA3AF] leading-relaxed relative">
-                    <span className="text-4xl text-[#1F1F2A] font-serif absolute -top-4 -left-2 select-none">&ldquo;</span>
-                    <span className="relative z-10">{testimonial.content}</span>
-                  </blockquote>
-                </CardContent>
-              </Card>
+                  <div>
+                    <h4 className="text-[#E5E7EB] font-medium text-sm">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-[#9CA3AF] text-xs">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>

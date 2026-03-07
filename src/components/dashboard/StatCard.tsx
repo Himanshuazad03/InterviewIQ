@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, TrendingUp, TrendingDown } from "lucide-react";
 
 interface StatCardProps {
   title: string;
@@ -13,23 +13,54 @@ interface StatCardProps {
 
 export function StatCard({ title, value, icon: Icon, trend }: StatCardProps) {
   return (
-    <Card className="bg-[#111118] border-[#1F1F2A] shadow-none rounded-xl transition-all hover:border-[#2D2D3A]">
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between space-x-4">
-          <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#1F2937] text-[#E5E7EB]">
-            <Icon className="w-6 h-6" />
+    <Card className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#0f0f17] to-[#0a0a12] backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-black/40">
+
+      {/* gradient glow */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent pointer-events-none" />
+
+      <CardContent className="relative z-10 p-6 flex flex-col gap-6">
+
+        {/* Header */}
+        <div className="flex items-center justify-between">
+
+          <p className="text-sm font-medium text-zinc-400 group-hover:text-zinc-300 transition">
+            {title}
+          </p>
+
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 text-white shadow-inner group-hover:scale-105 transition">
+            <Icon className="w-5 h-5 opacity-80" />
           </div>
+
+        </div>
+
+        {/* Value + Trend */}
+        <div className="flex items-end justify-between">
+
+          <h3 className="text-3xl font-bold tracking-tight text-white">
+            {value}
+          </h3>
+
           {trend && (
-            <div className={`text-xs font-medium px-2 py-1 rounded-full ${trend.isPositive ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'}`}>
-              {trend.isPositive ? '+' : ''}{trend.value}%
+            <div
+              className={`flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-lg border ${
+                trend.isPositive
+                  ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                  : "bg-rose-500/10 text-rose-400 border-rose-500/20"
+              }`}
+            >
+              {trend.isPositive ? (
+                <TrendingUp size={14} />
+              ) : (
+                <TrendingDown size={14} />
+              )}
+
+              {trend.isPositive ? "+" : ""}
+              {trend.value}%
             </div>
           )}
+
         </div>
-        
-        <div className="mt-4">
-          <h3 className="text-3xl font-heading font-semibold text-[#F9FAFB] tracking-tight">{value}</h3>
-          <p className="text-sm font-medium text-[#9CA3AF] mt-1">{title}</p>
-        </div>
+
       </CardContent>
     </Card>
   );
