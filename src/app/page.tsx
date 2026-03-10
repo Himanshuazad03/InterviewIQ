@@ -1,13 +1,13 @@
-import { CTASection } from "@/components/CTASection";
-import { FAQSection } from "@/components/FAQSection";
-import { FeaturesSection } from "@/components/FeaturesSection";
-import { HeroSection } from "@/components/HeroSection";
-import { HowItWorksSection } from "@/components/HowItWorksSection";
-import { Performance } from "@/components/Performance";
-import { PerformanceAnalyticsSection } from "@/components/PerformanceAnalyticsSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { CTASection } from "@/components/landing/CTASection";
+import { FAQSection } from "@/components/landing/FAQSection";
+import { FeaturesSection } from "@/components/landing/FeaturesSection";
+import { HeroSection } from "@/components/landing/HeroSection";
+import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
+import { Performance } from "@/components/landing/Performance";
+import { PerformanceAnalyticsSection } from "@/components/landing/PerformanceAnalyticsSection";
+import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
+import { Footer } from "@/components/landing/Footer";
+import { Header } from "@/components/landing/Header";
 import { createUser } from "@/lib/CheckUser";
 
 export default async function Home() {

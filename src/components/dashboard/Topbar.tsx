@@ -15,7 +15,7 @@ export function Topbar() {
     <>
       <header className="md:hidden sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-[#1F1F2A] bg-[#0B0B0F]/80 px-4 sm:px-8 backdrop-blur-md">
         {/* Left side greeting & Mobile Menu Toggle */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <button
             className="md:hidden flex h-9 w-9 items-center justify-center rounded-lg text-[#9CA3AF] hover:bg-[#1F2937] hover:text-[#F9FAFB] transition-colors"
             onClick={() => setIsMobileMenuOpen(true)}
@@ -23,7 +23,7 @@ export function Topbar() {
             <Menu className="h-5 w-5" />
           </button>
           <h2 className="text-lg font-heading font-semibold text-[#F9FAFB] hidden sm:block">
-            Welcome back, Rahul <span className="text-xl">👋</span>
+            Menu
           </h2>
         </div>
 
@@ -85,7 +85,9 @@ export function Topbar() {
                 const isActive =
                   item.href === "/dashboard"
                     ? pathname === "/dashboard"
-                    : pathname.startsWith(item.href);
+                    : pathname.startsWith(item.href) ||
+                      (item.href === "/dashboard/interviews" &&
+                        pathname.startsWith("/dashboard/interview"));
 
                 return (
                   <Link

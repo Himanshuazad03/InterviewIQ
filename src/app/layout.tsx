@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/landing/Header";
 import { ClerkProvider } from "@clerk/nextjs";
+import { shadcn } from "@clerk/ui/themes";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,7 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <ClerkProvider>
+      <ClerkProvider
+        appearance={{
+          theme: shadcn,
+        }}
+      >
         <body
           className={`${dmSans.className} ${poppins.variable} ${dmSans.variable} antialiased bg-[#050507] bg-gradient-to-b from-[#050507] to-[#16161D] min-h-screen text-[#E5E7EB] selection:bg-[#1F2937]`}
         >

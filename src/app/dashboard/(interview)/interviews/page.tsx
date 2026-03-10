@@ -1,21 +1,25 @@
 import { StatCard } from "@/components/dashboard/StatCard";
-import { ScoreChart } from "@/components/dashboard/ScoreChart";
-import { InterviewTable } from "@/components/dashboard/InterviewTable";
-import { Reveal } from "@/components/Reveal";
+import { ScoreChart } from "@/components/interviewDash/ScoreChart";
+import { InterviewTable } from "@/components/interviewDash/InterviewTable";
+import { Reveal } from "@/components/landing/Reveal";
 import { BrainCircuit, Target, TrendingUp, Trophy, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import InterviewForm from "@/components/dashboard/InterviewForm";
+import InterviewForm from "@/components/interviewDash/InterviewForm";
 import { AllInterviews } from "@/actions/Interview";
 import { currentUser } from "@clerk/nextjs/server";
-import AllInterview from "@/components/dashboard/AllInterviews";
+import AllInterview from "@/components/interviewDash/AllInterviews";
+
+import { Suspense } from "react";
+import Skeleton from "@/components/dashboard/Skeleton";
 
 export default async function InterviewsPage() {
   const user = await currentUser();
   const interviews = await AllInterviews();
 
   return (
-    <ScrollArea className="h-full">
+    <Suspense fallback={<Skeleton />}>
+      <ScrollArea className="h-full">
       <div className="space-y-6 p-4 sm:p-8 pb-10">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -75,14 +79,13 @@ export default async function InterviewsPage() {
               ))
             ) : (
               <>
-              <div>
-                You have'nt created any interview
-              </div>
+                <div>You have'nt created any interview</div>
               </>
             )}
           </div>
         </Reveal>
       </div>
-    </ScrollArea>
+      </ScrollArea>
+    </Suspense>
   );
 }

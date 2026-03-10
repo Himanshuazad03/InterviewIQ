@@ -2,6 +2,9 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Star } from "lucide-react";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { CircleCheck } from "lucide-react";
 
 export interface InterviewData {
   id: string;
@@ -78,7 +81,7 @@ export default function AllInterview({ interview }: AllInterviewProps) {
         {formattedType}
       </div>
 
-      <div className="p-6 flex flex-col h-full mt-3">
+      <div className="px-6 pt-3 flex flex-col h-full">
         {/* Logo Section */}
         <div
           className={`w-14 h-14 rounded-full flex items-center justify-center mb-5 ${color} shadow-lg`}
@@ -87,12 +90,15 @@ export default function AllInterview({ interview }: AllInterviewProps) {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-bold text-white mb-3 leading-tight tracking-tight">
-          {data.jobRole}
-        </h3>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-lg lg:text-xl font-bold text-white leading-tight tracking-tight">
+            {data.jobRole}
+          </h3>
+          {isCompleted && <CircleCheck className="w-6 h-6 text-green-500" />}
+        </div>
 
         {/* Metadata Row */}
-        <div className="flex items-center gap-5 text-[#A1A1AA] text-sm mb-4">
+        <div className="flex items-center lg:gap-5 gap-2 text-[#A1A1AA] text-sm mb-4">
           <div className="flex items-center gap-1.5 font-medium">
             <Calendar className="w-4 h-4" />
             {formattedDate}
@@ -104,44 +110,45 @@ export default function AllInterview({ interview }: AllInterviewProps) {
         </div>
 
         {/* Description */}
-        <p className="text-[#A1A1AA] text-sm leading-relaxed mb-8 flex-grow font-medium">
-          You haven't taken this interview yet. Take it now to improve your
-          skills.
+        <p className="text-[#A1A1AA] text-sm leading-relaxed flex-grow font-medium">
+          {isCompleted
+            ? "Congratulations, You have completed this interview"
+            : "You haven't taken this interview yet. Take it now to improve your skills"}
         </p>
 
         {/* Footer (Topics + Button) */}
-        <div className="flex items-center justify-between mt-auto">
+        <div className="flex flex-wrap items-center gap-2 py-4">
           {/* Overlapping topic pills */}
-          <div className="flex -space-x-2.5">
-            {data.topics && data.topics.length > 0 ? (
-              <>
-                {data.topics.slice(0, 3).map((topic, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-[#18181B] border-[3px] border-[#111116] flex items-center justify-center text-[9px] font-bold text-[#E4E4E7] shadow-sm z-20"
-                    style={{ zIndex: 10 - i }}
-                    title={topic}
-                  >
-                    {topic.substring(0, 2).toUpperCase()}
-                  </div>
-                ))}
-                {data.topics.length > 3 && (
-                  <div className="w-8 h-8 rounded-full bg-[#27272A] border-[3px] border-[#111116] flex items-center justify-center text-[9px] font-bold text-white shadow-sm z-0">
-                    +{data.topics.length - 3}
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="w-8 h-8 rounded-full bg-[#18181B] border-[3px] border-[#111116] flex items-center justify-center text-[9px] font-bold text-[#E4E4E7]">
-                NA
-              </div>
-            )}
-          </div>
-
-          <Button className="bg-[#E0D4FF] hover:bg-[#D4C3FF] text-[#1E114D] font-bold rounded-md px-5 transition-colors shadow-sm">
-            View Interview
-          </Button>
+          {data.topics.length > 3 ? (
+            <>
+              {data.topics.slice(0, 3).map((topic, i) => (
+                <Badge key={i} variant="secondary">
+                  {topic}
+                </Badge>
+              ))}
+              <Badge variant="secondary">+{data.topics.length - 3}</Badge>
+            </>
+          ) : (
+            data.topics.map((topic, i) => (
+              <Badge key={i} variant="secondary">
+                {topic}
+              </Badge>
+            ))
+          )}
         </div>
+        {isCompleted ? (
+          <Link href={`/dashboard/interview/${data.id}/attempts`}>
+            <Button className="bg-[#E0D4FF] w-full hover:bg-[#D4C3FF] text-[#1E114D] font-bold rounded-md px-5 transition-colors shadow-sm cursor-pointer">
+              View Interview
+            </Button>
+          </Link>
+        ) : (
+          <Link href={`/dashboard/interview/${data.id}`}>
+            <Button className="bg-[#E0D4FF] w-full hover:bg-[#D4C3FF] text-[#1E114D] font-bold rounded-md px-5 transition-colors shadow-sm cursor-pointer">
+              Start Interview
+            </Button>
+          </Link>
+        )}
       </div>
     </Card>
   );

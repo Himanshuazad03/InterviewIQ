@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/Reveal";
+import { Reveal } from "@/components/landing/Reveal";
 import { MiniScoreChart } from "@/components/dashboard/MiniScoreChart";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,9 +22,13 @@ export const metadata: Metadata = {
   description: "Your interview readiness and performance command center.",
 };
 
+import { Suspense } from "react";
+import Skeleton from "@/components/dashboard/Skeleton";
+
 export default function OverviewPage() {
   return (
-    <ScrollArea className="h-full">
+    <Suspense fallback={<Skeleton />}>
+      <ScrollArea className="h-full">
       <div className="space-y-6 p-4 sm:p-8 pb-10">
         <div>
           <h1 className="text-2xl font-bold text-white tracking-tight">
@@ -265,6 +269,7 @@ export default function OverviewPage() {
           </div>
         </div>
       </div>
-    </ScrollArea>
+      </ScrollArea>
+    </Suspense>
   );
 }

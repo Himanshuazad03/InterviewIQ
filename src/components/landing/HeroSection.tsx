@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/Reveal";
+import { Reveal } from "@/components/landing/Reveal";
 import Link from "next/link";
 import { Activity, BrainCircuit, CheckCircle2 } from "lucide-react";
 import { herodata } from "@/lib/data";

@@ -21,6 +21,7 @@ model User{
   email     String   @unique
   name      String?
   imageUrl  String?
+  plan      String   @default("Free")
   interview Interview[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -48,6 +49,7 @@ model Question {
   id        String   @id @default(cuid())
   interviewId String
   question  String
+  order     Int
   interview Interview @relation(fields: [interviewId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -56,9 +58,13 @@ model Question {
 model Attempt {
   id        String   @id @default(cuid())
   interviewId String
-  attempt   Int
+  attemptNo   Int
+  userId      String
+  score     Int
+  feedback  Json?
   interview Interview @relation(fields: [interviewId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  @@unique([interviewId, userId, attemptNo])
 }
 

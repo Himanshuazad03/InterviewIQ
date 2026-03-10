@@ -50,7 +50,7 @@ export function Header() {
         <div className="flex items-center gap-6">
           <SignedOut>
             <SignInButton forceRedirectUrl="/dashboard">
-              <Button className="rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-indigo-600/20 transition-all hover:shadow-indigo-500/40 hover:scale-[1.02]">
+              <Button className="rounded bg-[#111113] border border-gray-700 px-5 py-2.5 text-sm font-medium text-gray-200 hover:bg-[#1a1a1d] transition cursor-pointer">
                 Login
               </Button>
             </SignInButton>
@@ -60,7 +60,7 @@ export function Header() {
             <UserButton
               appearance={{
                 elements: {
-                  avatarBox: "w-10 h-10",
+                  avatarBox: "w-8 h-8",
                 },
               }}
             />
