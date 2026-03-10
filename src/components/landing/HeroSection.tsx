@@ -9,13 +9,12 @@ export function HeroSection() {
     <section className="relative overflow-hidden min-h-[90vh] flex flex-col items-center justify-start pt-8 pb-16 bg-[linear-gradient(to_bottom,#050507_0%,#0B0B0F_40%,#0B0B0F_70%,#16161D_100%)]">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#1F2937]/20 blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="absolute top-[25%] sm:top-[28%] left-1/2 -translate-x-1/2 w-[250%] sm:w-[150%] h-[800px] sm:h-[1000px] rounded-[100%] border-t-[1px] border-[#374151]/70 bg-[#0B0B0F] drop-shadow-[0_-20px_50px_rgba(156,163,175,0.08)] shadow-[inset_0_40px_100px_rgba(156,163,175,0.03)] pointer-events-none z-0" />
-      <div className="absolute top-[25%] sm:top-[28%] left-1/2 -translate-x-1/2 w-[150%] sm:w-[100%] h-[500px] rounded-[100%] border-t-[2px] border-[#9CA3AF]/40 blur-[4px] pointer-events-none z-0" />
-      <div className="absolute top-[25%] sm:top-[28%] left-1/2 -translate-x-1/2 w-[80%] sm:w-[50%] h-[300px] rounded-[100%] border-t-[3px] border-[#E5E7EB]/60 blur-[8px] pointer-events-none z-0" />
+      <div className="absolute top-[25%] sm:top-[28%] left-1/2 -translate-x-1/2 w-[250%] sm:w-[150%] h-[800px] sm:h-[1000px] rounded-[100%] border-t-[1px] border-[#374151]/70 bg-[#0B0B0F] pointer-events-none z-0" />
+      <div className="absolute top-[25%] sm:top-[28%] left-1/2 -translate-x-1/2 w-[150%] sm:w-[100%] h-[500px] rounded-[100%] border-t-[2px] border-[#9CA3AF]/40 blur-sm pointer-events-none z-0" />
+      <div className="absolute top-[25%] sm:top-[28%] left-1/2 -translate-x-1/2 w-[80%] sm:w-[50%] h-[300px] rounded-[100%] border-t-[3px] border-[#E5E7EB]/60 blur-md pointer-events-none z-0" />
 
       <div className="container mx-auto px-4 sm:px-6 relative w-full mt-4 sm:mt-8 flex flex-col items-center">
-        <Reveal>
-          <div className="flex flex-col items-center text-center gap-6 max-w-6xl mx-auto z-10 relative">
+          <div className="flex flex-col items-center text-center gap-6 max-w-6xl mx-auto z-10 relative animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="inline-flex items-center rounded-full border border-[#1F1F2A] bg-[#111118] px-4 py-1.5 text-xs sm:text-sm font-medium text-[#9CA3AF] shadow-sm">
               <span
                 className="mr-2 w-1.5 h-1.5 rounded-full bg-[#E5E7EB]/50"
@@ -37,10 +36,8 @@ export function HeroSection() {
               improvement over time.
             </p>
           </div>
-        </Reveal>
 
-        <Reveal delay={0.2}>
-          <div className="w-full flex justify-center mt-32 sm:mt-25 mb-12 relative z-20">
+          <div className="w-full flex justify-center mt-32 sm:mt-25 mb-12 relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Link href="/dashboard" className="w-full sm:w-auto">
                 <Button
@@ -59,7 +56,6 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-        </Reveal>
 
         <Reveal delay={0.2}>
           <div className="relative w-full max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8 mt-8 pb-20 z-10">

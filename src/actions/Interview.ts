@@ -75,6 +75,9 @@ export const AllInterviews = async () => {
       where: {
         userId: dbUser.id,
       },
+      orderBy: {
+        updatedAt: "asc",
+      },
     });
 
     return interviews;
@@ -137,6 +140,7 @@ export const generateFeedback = async (
       data: {
         score: feedback?.overallScore,
         status: "completed",
+        updatedAt: new Date(),
       },
     });
 

@@ -3,7 +3,7 @@ import { LucideIcon, TrendingUp, TrendingDown } from "lucide-react";
 
 interface StatCardProps {
   title: string;
-  value: string | number;
+  value: undefined | number | string;
   icon: LucideIcon;
   trend?: {
     value: number;

@@ -17,7 +17,6 @@ export const navItems = [
   { name: "Interviews", icon: GraduationCap, href: "/dashboard/interviews" },
   { name: "Resume Analysis", icon: FileBarChart, href: "/dashboard/resume" },
   { name: "Reports", icon: FileBarChart, href: "/dashboard/reports" },
-  { name: "Settings", icon: Settings, href: "/dashboard/settings" },
 ];
 
 export function Sidebars() {

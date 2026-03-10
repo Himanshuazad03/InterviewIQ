@@ -7,7 +7,6 @@ import { StatsCards } from "@/components/interview-analytics/StatsCards";
 import { ScoreProgressChart } from "@/components/interview-analytics/ScoreProgressChart";
 import { KeywordAnalytics } from "@/components/interview-analytics/KeywordAnalytics";
 import { AttemptsHistory } from "@/components/interview-analytics/AttemptsHistory";
-import { MotivationCTA } from "@/components/interview-analytics/MotivationCTA";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getInterviewAttempts, getInterview } from "@/actions/Interview";
 
@@ -110,7 +109,6 @@ export default async function AttemptsPage(props: {
                 You haven't taken this interview yet. Complete your first
                 attempt to view analytics.
               </p>
-              <MotivationCTA interviewId={interview.id} improvement={0} />
             </div>
           )}
         </div>

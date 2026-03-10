@@ -29,9 +29,9 @@ export default function DashboardLayout({
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#0B0B0F] text-[#E5E7EB] selection:bg-[#1F2937]">
-      <Suspense fallback={<SideBarSkeleton />}>
+      {/* <Suspense fallback={<SideBarSkeleton />}>
         <Sidebars />
-      </Suspense>
+      </Suspense> */}
 
       <div className="flex-1 flex flex-col min-w-0">
         <Topbar />
