@@ -1,7 +1,6 @@
 import React from "react";
 import { AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { getScoreColor } from "@/lib/score-utils";
 import { CheckCircle2, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +21,13 @@ export const QuestionFeedbackCard = ({
   strength,
   improvement,
 }: QuestionFeedbackProps) => {
-  const scoreColors = getScoreColor(score);
+  const getQuestionScoreColor = (s: number) => {
+    if (s >= 7) return { text: "text-emerald-500", bgMuted: "bg-emerald-500/10" };
+    if (s >= 4) return { text: "text-amber-500", bgMuted: "bg-amber-500/10" };
+    return { text: "text-rose-500", bgMuted: "bg-rose-500/10" };
+  };
+
+  const scoreColors = getQuestionScoreColor(score);
 
   return (
     <AccordionItem 

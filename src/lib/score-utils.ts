@@ -1,5 +1,5 @@
 export function getScoreColor(score: number): { text: string; bg: string; border: string; bgMuted: string } {
-  if (score >= 75) {
+  if (score >= 70) {
     return {
       text: "text-emerald-500",
       bg: "bg-emerald-500",
@@ -29,3 +29,4 @@ export function getScoreLabel(score: number): string {
   if (score >= 60) return "Good";
   return "Needs Improvement";
 }
+
