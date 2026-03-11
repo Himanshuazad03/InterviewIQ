@@ -36,7 +36,7 @@ export function HeroSection() {
         </div>
 
         <div className="w-full flex justify-center items-center mt-32 sm:mt-18 mb-12 relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
-          <div className="w-full flex justify-center items-center mt-20 sm:mt-18 mb-12 relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
+          <div className="w-full flex justify-center items-center relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
             <Link href="/dashboard/interviews">
               <Button
                 size="lg"
