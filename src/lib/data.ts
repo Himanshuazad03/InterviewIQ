@@ -23,24 +23,52 @@ export const steps = [
   {
     step: "01",
     title: "Start Mock Interview",
+    imgUrl: "/step1.png",
     description:
       "Launch a realistic interview session tailored to your target role.",
   },
   {
     step: "02",
     title: "AI Evaluates Your Response",
+    imgUrl: "/step2.png",
     description:
       "Advanced models analyze your answers for technical depth and clarity.",
   },
   {
     step: "03",
     title: "Receive Structured Feedback",
+    imgUrl: "/step3.png",
     description:
       "Get granular scores and actionable insights on your performance.",
   },
   {
     step: "04",
     title: "Track Performance Over Time",
+    imgUrl: "/step4.png",
     description: "Monitor your progress and eliminate recurring weak points.",
+  },
+];
+
+export const testimonials = [
+  {
+    name: "Animesh Porwal",
+    role: "ML Engineer",
+    content:
+      "InterviewIQ completely changed how I prep for interviews. The AI feedback was spot-on and helped me identify my weak points in behavioral questions.",
+    imgUrl: "/Anni.png",
+  },
+  {
+    name: "Harshit Yadav",
+    role: "Web2 Developer",
+    content:
+      "The mock interviews felt very realistic. Practicing here before my placement interviews boosted my confidence and helped me answer technical questions better.",
+    imgUrl: "/harshit.png",
+  },
+  {
+    name: "Koushik Pali",
+    role: "Full Stack Developer",
+    content:
+      "The scoring and feedback were incredibly helpful. I could clearly see my progress after every practice interview and felt much more prepared for campus interviews.",
+    imgUrl: "/koushik.png",
   },
 ];

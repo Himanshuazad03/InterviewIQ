@@ -57,19 +57,6 @@ async function FeedbackContent({ id }: { id: string }) {
         <div className="mt-8">
           <QuestionFeedbackList questions={feedback?.questions} />
         </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-12 mb-8 flex justify-center">
-          <Link href={retakeHref}>
-            <Button
-              size="lg"
-              className="bg-white hover:bg-white/90 text-black font-semibold rounded-full px-8 py-6 text-lg shadow-xl shadow-white/5 transition-transform hover:scale-105"
-            >
-              <RefreshCw className="mr-2 w-5 h-5" />
-              Retake Interview
-            </Button>
-          </Link>
-        </div>
       </div>
     </ScrollArea>
   );

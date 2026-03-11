@@ -17,12 +17,16 @@ export default async function InterviewsPage() {
   const user = await currentUser();
   const interviews = await AllInterviews();
 
-  const totalInterviews: number | undefined = interviews?.length;
-  const averageScore =
+  const totalInterviews: number | undefined = interviews?.filter(
+    (i) => i.score !== null,
+  )?.length;
+
+  const averageScore = Math.round(
     interviews && totalInterviews
       ? interviews.reduce((acc, interview) => acc + (interview.score ?? 0), 0) /
-        interviews.length
-      : 0;
+          totalInterviews
+      : 0,
+  );
 
   const highestScore = interviews?.reduce(
     (acc, interview) => Math.max(acc, interview.score ?? 0),

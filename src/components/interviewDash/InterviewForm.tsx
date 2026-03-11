@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { interviewSchema, InterviewSchema } from "@/lib/schema";
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -67,12 +68,14 @@ export default function InterviewForm({
         if(result){
             form.reset();
             setOpen(false);
+            toast.success("Interview Created successfully")
         }
-    } catch (error) {
-        console.log(error);
+    } catch (error:any) {
+        toast.error(error.message)
+        form.reset()
     } finally {
         setIsLoading(false);
-        form.reset();
+        
     }
   };
 

@@ -75,7 +75,7 @@ export default async function AttemptsPage(props: {
       : 0;
 
   return (
-    <div className="h-screen bg-[#050507] text-white overflow-hidden flex flex-col">
+    <div className=" bg-[#050507] text-white overflow-hidden flex flex-col">
       <ScrollArea className="flex-1 h-full">
         <div className="px-6 py-6 md:p-10 lg:p-12 max-w-6xl mx-auto">
           <AttemptsHeader role={interview.jobRole} />

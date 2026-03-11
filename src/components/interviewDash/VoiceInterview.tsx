@@ -2,7 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Mic, User, MessageSquare, X, Loader2 } from "lucide-react";
+import {
+  Mic,
+  User,
+  MessageSquare,
+  X,
+  Loader2,
+  BrainCircuit,
+} from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { generateFeedback } from "@/actions/Interview";
@@ -333,18 +340,18 @@ export default function VoiceInterview({
     finishedRef.current = true;
     processingRef.current = true;
 
-    const closing = `Great job ${user?.firstName}, you have completed the interview. Please wait while we generate your feedback.`;
+    const closing = `Great job ${user?.firstName}, you have completed the interview.`;
 
     aiSpeak(closing);
     setListening(false);
     setThinking(false);
+    const promise = new Promise((res) => setTimeout(res, 2400));
+    await promise
     setShowFeedbackDialog(true);
 
     try {
       recognitionRef.current?.stop();
     } catch {}
-
-    console.log(answersRef.current);
 
     const attemptId = await generateFeedback(
       answersRef.current,
@@ -352,8 +359,6 @@ export default function VoiceInterview({
       role,
       skills,
     );
-
-    console.log("attempt id is", attemptId)
 
     window.speechSynthesis.cancel();
 
@@ -439,8 +444,8 @@ export default function VoiceInterview({
       <div className="w-full max-w-4xl mb-10">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-[#E0D4FF]" />
-            <span className="font-bold text-lg">PrepWise</span>
+            <BrainCircuit className="w-5 h-5 text-[#E0D4FF]" />
+            <span className="font-bold text-lg">InterviewIQ</span>
           </div>
 
           <Button variant="destructive" onClick={exitInterview}>
@@ -449,19 +454,21 @@ export default function VoiceInterview({
           </Button>
         </div>
 
-        <div className="flex justify-between items-end">
-          <div>
+        <div className="flex justify-between items-end mt-5">
+          <div className="flex flex-col gap-5">
             <h1 className="text-lg font-bold text-gray-300">{role}</h1>
-            <h3 className="text-base font-medium text-gray-300">
-              Interview Generation
-            </h3>
-            <h3 className="text-base font-medium text-gray-300">
-              {skills.join(", ")}
-            </h3>
+            <div className="flex flex-col gap-2">
+              <h3 className="text-base font-medium text-gray-300">
+                Interview Generation
+              </h3>
+              <h3 className="text-base font-medium text-gray-300">
+                {skills.join(", ")}
+              </h3>
 
-            <p className="text-xs text-gray-500 mt-1">
-              Question {currentIndex + 1} / {questions.length}
-            </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Question {currentIndex + 1} / {questions.length}
+              </p>
+            </div>
           </div>
 
           <div className="w-40 bg-[#1F1F2A] h-2 rounded-full overflow-hidden">

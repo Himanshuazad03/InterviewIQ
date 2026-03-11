@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/landing/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/ui/themes";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -38,7 +39,9 @@ export default function RootLayout({
         <body
           className={`${dmSans.className} ${poppins.variable} ${dmSans.variable} antialiased bg-[#050507] bg-gradient-to-b from-[#050507] to-[#16161D] min-h-screen text-[#E5E7EB] selection:bg-[#1F2937]`}
         >
+          <Header />
           {children}
+          <Toaster position="top-center"/>
         </body>
       </ClerkProvider>
     </html>

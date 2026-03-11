@@ -151,19 +151,9 @@ function StepRow({ item, index }: { item: (typeof steps)[0]; index: number }) {
           }`}
         >
           {/* Simulated UI internal structure */}
-          <div className="absolute top-0 left-0 right-0 h-8 border-b border-[#1F1F2A] bg-[#050507] flex items-center px-4 gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#1F1F2A]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#1F1F2A]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#1F1F2A]" />
-          </div>
-          <div className="absolute inset-x-0 bottom-0 top-8 p-4 flex flex-col gap-3 opacity-60">
-            <div className="h-4 w-1/3 rounded bg-[#1F1F2A]" />
-            <div className="space-y-2 flex-1">
-              <div className="h-2 w-full rounded bg-[#1F1F2A]" />
-              <div className="h-2 w-5/6 rounded bg-[#1F1F2A]" />
-              <div className="h-2 w-4/6 rounded bg-[#1F1F2A]" />
-            </div>
-          </div>
+
+          {/* Dummy video placeholder - replace src with your original video URL later */}
+          <img src={item.imgUrl} className="object-cover" />
         </motion.div>
       </div>
     </div>

@@ -37,9 +37,9 @@ export function HeroSection() {
             </p>
           </div>
 
-          <div className="w-full flex justify-center mt-32 sm:mt-25 mb-12 relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
+          <div className="w-full flex justify-center mt-32 sm:mt-18 mb-12 relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Link href="/dashboard" className="w-full sm:w-auto">
+              <Link href="/dashboard/interviews" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   className="w-full sm:w-auto h-12 px-4 md:px-8 rounded-full bg-[#E5E7EB] text-[#050507] hover:bg-white md:font-medium font-medium text-sm md:text-base transition-colors duration-200 shadow-[0_0_30px_rgba(229,231,235,0.15)]"
@@ -47,13 +47,6 @@ export function HeroSection() {
                   Start Free Interview
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="ghost"
-                className="w-full sm:w-auto h-12 px-4 md:px-8 rounded-full border border-[#1F1F2A] text-[#E5E7EB] hover:bg-[#111118] md:font-medium font-medium text-sm md:text-base transition-colors duration-200 bg-[#0B0B0F]/80 backdrop-blur-sm"
-              >
-                View Demo
-              </Button>
             </div>
           </div>
 

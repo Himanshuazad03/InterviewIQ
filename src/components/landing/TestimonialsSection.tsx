@@ -1,29 +1,7 @@
 import { Reveal } from "./Reveal";
 import { Star } from "lucide-react";
+import { testimonials } from "@/lib/data";
 
-const testimonials = [
-  {
-    name: "Sarah Chen",
-    role: "Software Engineer @ TechCorp",
-    content:
-      "InterviewIQ completely changed how I prep for interviews. The AI feedback was spot-on and helped me identify my weak points in behavioral questions.",
-    rating: 5,
-  },
-  {
-    name: "Michael Torres",
-    role: "Product Manager @ InnovateX",
-    content:
-      "The realistic scenarios and instant scoring gave me the confidence I needed. I landed my dream role after practicing here just for a week.",
-    rating: 5,
-  },
-  {
-    name: "Elena Rodriguez",
-    role: "Data Scientist @ DataFlow",
-    content:
-      "A game-changer! The rubric-based evaluation is incredibly detailed. It felt like I was doing a real mock interview with an industry expert.",
-    rating: 5,
-  },
-];
 
 export function TestimonialsSection() {
   return (
@@ -49,15 +27,7 @@ export function TestimonialsSection() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
                 {/* Stars */}
-                <div className="flex items-center gap-1 mb-6">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]"
-                      strokeWidth={1}
-                    />
-                  ))}
-                </div>
+                
 
                 {/* Content */}
                 <p className="text-[#D1D5DB] text-base leading-relaxed mb-8 flex-1">
@@ -66,9 +36,7 @@ export function TestimonialsSection() {
 
                 {/* Profile */}
                 <div className="flex items-center gap-4 mt-auto pt-6 border-t border-[#1F1F2A]/50">
-                  <div className="w-10 h-10 rounded-full bg-[#1F1F2A] flex items-center justify-center text-[#E5E7EB] font-medium shrink-0">
-                    {testimonial.name.charAt(0)}
-                  </div>
+                  <img src={testimonial.imgUrl} className="w-12 h-12 rounded-full object-cover" />
                   <div>
                     <h4 className="text-[#E5E7EB] font-medium text-sm">
                       {testimonial.name}

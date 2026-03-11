@@ -7,14 +7,12 @@ import { Performance } from "@/components/landing/Performance";
 import { PerformanceAnalyticsSection } from "@/components/landing/PerformanceAnalyticsSection";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { Footer } from "@/components/landing/Footer";
-import { Header } from "@/components/landing/Header";
 import { createUser } from "@/lib/CheckUser";
 
 export default async function Home() {
   await createUser();
   return (
     <div className="min-h-screen flex flex-col pb-0">
-      <Header />
       <main className="flex-1">
         <HeroSection />
         <FeaturesSection />

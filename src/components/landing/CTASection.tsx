@@ -19,7 +19,7 @@ export function CTASection() {
             </p>
 
             <div className="flex flex-row justify-center items-center gap-4 pt-4">
-              <Link href="/dashboard" className="sm:w-auto">
+              <Link href="/dashboard/interviews" className="sm:w-auto">
                 <Button
                   size="lg"
                   className="h-12 w-full px-4 md:px-8 rounded-lg bg-[#2D2D3A] text-[#F9FAFB] hover:bg-[#374151] border-0 transition-colors"
