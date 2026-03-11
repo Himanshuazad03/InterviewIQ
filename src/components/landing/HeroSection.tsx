@@ -42,7 +42,7 @@ export function HeroSection() {
               <Link href="/dashboard/interviews" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto h-12 px-4 md:px-8 rounded-full bg-[#E5E7EB] text-[#050507] hover:bg-white md:font-medium font-medium text-sm md:text-base transition-colors duration-200 shadow-[0_0_30px_rgba(229,231,235,0.15)]"
+                  className="w-sm sm:w-auto h-12 px-4 md:px-8 rounded-full bg-[#E5E7EB] text-[#050507] hover:bg-white md:font-medium font-medium text-sm md:text-base transition-colors duration-200 shadow-[0_0_30px_rgba(229,231,235,0.15)]"
                 >
                   Start Free Interview
                 </Button>

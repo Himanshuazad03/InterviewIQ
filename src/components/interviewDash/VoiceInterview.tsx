@@ -110,6 +110,8 @@ export default function VoiceInterview({
     utterance.onend = () => {
       setAiSpeaking(false);
 
+      if (finishedRef.current) return;
+
       if (startedRef.current && !processingRef.current) {
         startListening();
       }
@@ -337,18 +339,25 @@ export default function VoiceInterview({
 
   const finishInterview = async () => {
     if (finishedRef.current) return;
+
     finishedRef.current = true;
     processingRef.current = true;
 
     const closing = `Great job ${user?.firstName}, you have completed the interview.`;
 
-    aiSpeak(closing);
-    setListening(false);
-    setThinking(false);
-    const promise = new Promise((res) => setTimeout(res, 2400));
-    await promise
-    setShowFeedbackDialog(true);
+    speak(closing);
 
+    const waitForSpeech = setInterval(() => {
+      if (!window.speechSynthesis.speaking) {
+        clearInterval(waitForSpeech);
+
+        setShowFeedbackDialog(true);
+        generateReport();
+      }
+    }, 200);
+  };
+
+  const generateReport = async () => {
     try {
       recognitionRef.current?.stop();
     } catch {}
@@ -360,8 +369,6 @@ export default function VoiceInterview({
       skills,
     );
 
-    window.speechSynthesis.cancel();
-
     if (attemptId) {
       router.push(
         `/dashboard/interview/${interviewId}/attempts/feedback/${attemptId}`,
@@ -370,7 +377,6 @@ export default function VoiceInterview({
       router.push(`/dashboard/interviews`);
     }
   };
-
   //--------------------------------------------------
   // EXIT
   //--------------------------------------------------
