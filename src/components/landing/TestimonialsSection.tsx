@@ -36,7 +36,7 @@ export function TestimonialsSection() {
 
                 {/* Profile */}
                 <div className="flex items-center gap-4 mt-auto pt-6 border-t border-[#1F1F2A]/50">
-                  <img src={testimonial.imgUrl} className="w-12 h-12 rounded-full object-cover" />
+                  <img src={testimonial.imgUrl} alt="profile" className="w-12 h-12 rounded-full object-cover" />
                   <div>
                     <h4 className="text-[#E5E7EB] font-medium text-sm">
                       {testimonial.name}

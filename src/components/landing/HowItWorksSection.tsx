@@ -153,7 +153,7 @@ function StepRow({ item, index }: { item: (typeof steps)[0]; index: number }) {
           {/* Simulated UI internal structure */}
 
           {/* Dummy video placeholder - replace src with your original video URL later */}
-          <img src={item.imgUrl} className="object-cover" />
+          <img src={item.imgUrl} alt="image" className="object-cover" />
         </motion.div>
       </div>
     </div>
