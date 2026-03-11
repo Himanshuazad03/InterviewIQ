@@ -1,4 +1,4 @@
-import React from "react";
+
 import { AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, TrendingUp } from "lucide-react";
