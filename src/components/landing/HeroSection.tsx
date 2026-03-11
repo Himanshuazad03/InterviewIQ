@@ -14,41 +14,39 @@ export function HeroSection() {
       <div className="absolute top-[25%] sm:top-[28%] left-1/2 -translate-x-1/2 w-[80%] sm:w-[50%] h-[300px] rounded-[100%] border-t-[3px] border-[#E5E7EB]/60 blur-md pointer-events-none z-0" />
 
       <div className="container mx-auto px-4 sm:px-6 relative w-full mt-4 sm:mt-8 flex flex-col items-center">
-          <div className="flex flex-col items-center text-center gap-6 max-w-6xl mx-auto z-10 relative animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="inline-flex items-center rounded-full border border-[#1F1F2A] bg-[#111118] px-4 py-1.5 text-xs sm:text-sm font-medium text-[#9CA3AF] shadow-sm">
-              <span
-                className="mr-2 w-1.5 h-1.5 rounded-full bg-[#E5E7EB]/50"
-                aria-hidden="true"
-              />
-              AI-Driven{" "}
-              <span className="text-[#E5E7EB] ml-1">
-                Evaluation & Analytics
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-6xl lg:text-[5rem] font-bold leading-[1.05] tracking-tight text-[#E5E7EB] pb-2 text-center max-w-4xl">
-              Turn Interview Practice{" "}
-              <span className="whitespace-nowrap">Into Opportunity</span>
-            </h1>
-
-            <p className="text-lg sm:text-xl text-[#9CA3AF] leading-relaxed max-w-2xl font-normal mt-2">
-              Simulate real-world technical and behavioral interviews. Receive
-              structured scoring, actionable insights, and measurable
-              improvement over time.
-            </p>
+        <div className="flex flex-col items-center text-center gap-6 max-w-6xl mx-auto z-10 relative animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="inline-flex items-center rounded-full border border-[#1F1F2A] bg-[#111118] px-4 py-1.5 text-xs sm:text-sm font-medium text-[#9CA3AF] shadow-sm">
+            <span
+              className="mr-2 w-1.5 h-1.5 rounded-full bg-[#E5E7EB]/50"
+              aria-hidden="true"
+            />
+            AI-Driven{" "}
+            <span className="text-[#E5E7EB] ml-1">Evaluation & Analytics</span>
           </div>
+          <h1 className="text-4xl sm:text-6xl lg:text-[5rem] font-bold leading-[1.05] tracking-tight text-[#E5E7EB] pb-2 text-center max-w-4xl">
+            Turn Interview Practice{" "}
+            <span className="whitespace-nowrap">Into Opportunity</span>
+          </h1>
 
-          <div className="w-full flex justify-center mt-32 sm:mt-18 mb-12 relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Link href="/dashboard/interviews" className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className="w-sm sm:w-auto h-12 px-4 md:px-8 rounded-full bg-[#E5E7EB] text-[#050507] hover:bg-white md:font-medium font-medium text-sm md:text-base transition-colors duration-200 shadow-[0_0_30px_rgba(229,231,235,0.15)]"
-                >
-                  Start Free Interview
-                </Button>
-              </Link>
-            </div>
+          <p className="text-lg sm:text-xl text-[#9CA3AF] leading-relaxed max-w-2xl font-normal mt-2">
+            Simulate real-world technical and behavioral interviews. Receive
+            structured scoring, actionable insights, and measurable improvement
+            over time.
+          </p>
+        </div>
+
+        <div className="w-full flex justify-center items-center mt-32 sm:mt-18 mb-12 relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
+          <div className="w-full flex justify-center items-center mt-20 sm:mt-18 mb-12 relative z-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
+            <Link href="/dashboard/interviews">
+              <Button
+                size="lg"
+                className="h-12 px-6 md:px-8 rounded-full bg-[#E5E7EB] text-[#050507] hover:bg-white font-medium text-sm md:text-base transition-colors duration-200 shadow-[0_0_30px_rgba(229,231,235,0.15)]"
+              >
+                Start Free Interview
+              </Button>
+            </Link>
           </div>
+        </div>
 
         <Reveal delay={0.2}>
           <div className="relative w-full max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8 mt-8 pb-20 z-10">
