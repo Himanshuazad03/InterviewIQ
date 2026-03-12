@@ -114,11 +114,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ---
 
 ## 💡 How It Works
-1. **Sign Up/In**: User authenticates via Clerk.
-2. **Create Interview**: The user inputs details about the role they are targeting. AI generates an ordered list of questions.
-3. **Take Interview**: The user answers the questions using voice (browser speech-to-text) or typing.
-4. **Get Feedback**: Answers are evaluated against the ideal rubric. The AI engine generates an overall score, highlights missing keywords, and provides actionable improvements.
-5. **Analyze**: Performance charts update automatically to show progression across all past attempts.
+
+### Step 1: Create Interview
+The user inputs details about the role they are targeting. AI generates an ordered list of questions tailored to the job description.
+
+![Step 1 - Create Interview](public/image.png)
+
+### Step 2: Take Interview
+The user answers the questions using voice (browser speech-to-text). The application records responses for analysis.
+
+![Step 2 - Take Interview](public/step1.png)
+
+### Step 3: Get Feedback & Analyze
+Answers are evaluated against the ideal rubric. The AI engine generates an overall score, highlights missing keywords, and provides actionable improvements. Performance charts update automatically to show progression.
+
+![Step 3 - Feedback & Analytics](public/step3.png)
 
 ---
 
