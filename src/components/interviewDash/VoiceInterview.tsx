@@ -223,7 +223,8 @@ export default function VoiceInterview({
       (window as any).webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      console.error("Speech recognition not supported");
+      alert("Speech recognition not supported");
+      router.push("/dashboard/interviews");
       return;
     }
 
@@ -345,7 +346,7 @@ export default function VoiceInterview({
 
     const closing = `Great job ${user?.firstName}, you have completed the interview.`;
 
-    speak(closing);
+    aiSpeak(closing);
 
     const waitForSpeech = setInterval(() => {
       if (!window.speechSynthesis.speaking) {
