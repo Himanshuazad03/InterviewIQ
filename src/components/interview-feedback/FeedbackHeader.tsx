@@ -21,14 +21,14 @@ export const FeedbackHeader = ({
 }: FeedbackHeaderProps) => {
   const router = useRouter();
   const checkRetake = async () => {
-    try {
-      const data = await checkRetakeRateLimit();
-      if (data.success) {
-        router.push(retakeHref);
-      }
-    } catch (error: any) {
-      toast.error(error.message || "Failed to check retake rate limit");
+    const data = await checkRetakeRateLimit();
+
+    if (!data.success) {
+      toast.error(data.message);
+      return;
     }
+
+    router.push(retakeHref);
   };
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-8">

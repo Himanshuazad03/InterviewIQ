@@ -96,15 +96,27 @@ export const checkRetakeRateLimit = async () => {
 
     if (decision.isDenied()) {
       if (decision.reason.isRateLimit()) {
-        throw new Error("You have reached the maximum number of retakes for today. Please try again tomorrow.");
+        return {
+          success: false,
+          message:
+            "You have reached the maximum number of retakes for today. Please try again tomorrow.",
+        };
       }
-      throw new Error("Unauthorized");
+
+      return {
+        success: false,
+        message: "Unauthorized",
+      };
     }
 
     return { success: true };
   } catch (error: any) {
-    console.log(error.message);
-    throw new Error(error.message || "Failed to check retake rate limit");
+    console.error(error);
+
+    return {
+      success: false,
+      message: "Failed to check retake rate limit",
+    };
   }
 };
 
