@@ -35,6 +35,8 @@ export default async function InterviewsPage() {
     0,
   );
 
+
+
   const lowestScore = interviews?.reduce(
     (acc, interview) => Math.min(acc, interview.score ?? 0),
     0,
@@ -43,6 +45,21 @@ export default async function InterviewsPage() {
   const scores = (interviews ?? [])
     .map((i) => i.score)
     .filter((s): s is number => s !== null);
+
+  
+  let trend = { value: 0, isPositive: false };
+
+  if (scores.length >= 2) {
+    const lastScore = scores[scores.length - 1];
+    const prevScore = scores[scores.length - 2];
+
+    const diff = lastScore - prevScore;
+
+    trend = {
+      value: Math.abs(diff),
+      isPositive: diff >= 0,
+    };
+  }
 
   return (
     <Suspense fallback={<Skeleton />}>
@@ -72,13 +89,12 @@ export default async function InterviewsPage() {
                 title="Total Interviews"
                 value={totalInterviews}
                 icon={Target}
-                trend={{ value: 15, isPositive: true }}
               />
               <StatCard
                 title="Average Score"
                 value={averageScore}
                 icon={Trophy}
-                trend={{ value: 4.2, isPositive: true }}
+                trend={trend}
               />
               <StatCard
                 title="Highest Score"
