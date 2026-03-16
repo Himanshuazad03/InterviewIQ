@@ -103,7 +103,7 @@ export const checkRetakeRateLimit = async () => {
 
     return { success: true };
   } catch (error: any) {
-    console.log(error);
+    console.log(error.message);
     throw new Error(error.message || "Failed to check retake rate limit");
   }
 };
