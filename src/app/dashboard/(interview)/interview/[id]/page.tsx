@@ -1,3 +1,4 @@
+"use client"
 import { prisma } from "@/lib/prisma";
 import VoiceInterview from "@/components/interviewDash/VoiceInterview";
 import { getInterview } from "@/actions/Interview";
