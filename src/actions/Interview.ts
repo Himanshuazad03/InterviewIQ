@@ -194,17 +194,6 @@ export const generateFeedback = async (
       },
     });
 
-    const updateInterviewScore = await prisma.interview.update({
-      where: {
-        id: interviewId,
-        userId: dbUser.id,
-      },
-      data: {
-        score: feedback?.overallScore,
-        status: "completed",
-        updatedAt: new Date(),
-      },
-    });
 
     if (feedback) {
       const attempt = await prisma.attempt.create({
@@ -271,5 +260,40 @@ export const getAttemptFeedback = async (id: string) => {
     return attempt;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getRecentAttempts = async (limit: number = 4) => {
+  try {
+    const userId = await requireUser();
+    const dbUser = await prisma.user.findUnique({
+      where: { clerkId: userId },
+    });
+
+    if (!dbUser) {
+      throw new Error("User not Found");
+    }
+
+    const attempts = await prisma.attempt.findMany({
+      where: {
+        userId: dbUser.id,
+      },
+      include: {
+        interview: {
+          select: {
+            jobRole: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: limit,
+    });
+
+    return attempts;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 };

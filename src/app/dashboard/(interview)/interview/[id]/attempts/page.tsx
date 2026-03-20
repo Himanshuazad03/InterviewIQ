@@ -5,7 +5,6 @@ import { Attempt } from "@/components/interview-analytics/types";
 import { AttemptsHeader } from "@/components/interview-analytics/AttemptsHeader";
 import { StatsCards } from "@/components/interview-analytics/StatsCards";
 import { ScoreProgressChart } from "@/components/interview-analytics/ScoreProgressChart";
-import { KeywordAnalytics } from "@/components/interview-analytics/KeywordAnalytics";
 import { AttemptsHistory } from "@/components/interview-analytics/AttemptsHistory";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getInterviewAttempts, getInterview } from "@/actions/Interview";
@@ -17,12 +16,29 @@ export default async function AttemptsPage(props: {
 
   const [attempts, interview] = await Promise.all([
     getInterviewAttempts(id),
-    getInterview(id)
+    getInterview(id),
   ]);
 
   if (!attempts || !interview) {
     return notFound();
   }
+
+  const scores = attempts.map((attempt) => attempt.score);
+
+  let trend = { value: 0, isPositive: false };
+
+  if (scores.length >= 2) {
+    const lastScore = scores[scores.length - 1];
+    const prevScore = scores[scores.length - 2];
+
+    const diff = lastScore - prevScore;
+
+    trend = {
+      value: Math.abs(diff),
+      isPositive: diff >= 0,
+    };
+  }
+
 
   const mappedAttempts: Attempt[] = attempts.map((attempt) => {
     const feedback = attempt.feedback as any;
@@ -43,21 +59,10 @@ export default async function AttemptsPage(props: {
       return 0;
     };
 
-    let keywordMatchPct = 0;
-    if (feedback?.keywordMatch) {
-      const matched = feedback.keywordMatch.matched?.length || 0;
-      const missed = feedback.keywordMatch.missed?.length || 0;
-      const total = matched + missed;
-      if (total > 0) {
-        keywordMatchPct = Math.round((matched / total) * 100);
-      }
-    }
-
     return {
       id: attempt.id,
       score: attempt.score,
       date: attempt.createdAt.toISOString(),
-      keywordMatch: keywordMatchPct,
       skills: {
         communication: getSkillScore(["communication", "explain"]),
         technicalKnowledge: getSkillScore(["technical", "knowledge"]),
@@ -82,23 +87,19 @@ export default async function AttemptsPage(props: {
 
           {mappedAttempts.length > 0 ? (
             <>
-              <StatsCards attempts={mappedAttempts} />
+              <StatsCards attempts={mappedAttempts} trend={trend} />
 
               <div className="flex flex-col gap-6 mb-8">
                 <div className="w-full">
                   <ScoreProgressChart attempts={mappedAttempts} />
                 </div>
-                <div className="w-full">
-                  <KeywordAnalytics attempts={mappedAttempts} />
-                </div>
               </div>
-            {attempts?.length > 0 && (
-              <AttemptsHistory
-                interviewId={interview.id}
-                attempts={mappedAttempts}
-              />
-            )}
-              
+              {attempts?.length > 0 && (
+                <AttemptsHistory
+                  interviewId={interview.id}
+                  attempts={mappedAttempts}
+                />
+              )}
             </>
           ) : (
             <div className="bg-[#111116] border border-[#27272A] rounded-2xl p-12 text-center text-gray-400 mt-10">

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Clock, Calendar, Briefcase, RefreshCw } from "lucide-react";
+import { Clock, Calendar, Briefcase, RefreshCw, History } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { checkRetakeRateLimit } from "@/actions/Interview";
 import { useRouter } from "next/navigation";
@@ -12,12 +12,14 @@ interface FeedbackHeaderProps {
   role: string;
   date: string;
   retakeHref: string;
+  allAttemptsHref: string;
 }
 
 export const FeedbackHeader = ({
   role,
   date,
   retakeHref,
+  allAttemptsHref,
 }: FeedbackHeaderProps) => {
   const router = useRouter();
   const checkRetake = async () => {
@@ -52,14 +54,27 @@ export const FeedbackHeader = ({
         </div>
       </div>
 
-      <Button
-        onClick={checkRetake}
-        size="lg"
-        className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full shrink-0"
-      >
-        <RefreshCw className="mr-2 w-4 h-4" />
-        Retake Interview
-      </Button>
+      <div className="flex flex-col sm:flex-row gap-3 mt-4 md:mt-0 w-full sm:w-auto">
+        <Button
+          asChild
+          variant="outline"
+          size="lg"
+          className="w-full sm:w-auto font-medium rounded-full shrink-0 border-white/20 text-white hover:bg-white/10 bg-transparent"
+        >
+          <Link href={allAttemptsHref}>
+            <History className="mr-2 w-4 h-4" />
+            All Attempts
+          </Link>
+        </Button>
+        <Button
+          onClick={checkRetake}
+          size="lg"
+          className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full shrink-0 cursor-pointer"
+        >
+          <RefreshCw className="mr-2 w-4 h-4" />
+          Retake Interview
+        </Button>
+      </div>
     </div>
   );
 };

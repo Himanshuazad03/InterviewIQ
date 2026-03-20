@@ -25,6 +25,7 @@ async function FeedbackContent({ id }: { id: string }) {
 
   const feedback = data.feedback as unknown as FeedbackType;
   const retakeHref = `/dashboard/interview/${data.interviewId}`;
+  const allAttemptsHref = `/dashboard/interview/${data.interviewId}/attempts`;
 
   return (
     <ScrollArea className="h-full">
@@ -33,6 +34,7 @@ async function FeedbackContent({ id }: { id: string }) {
           role={feedback?.role}
           date={data?.createdAt?.toISOString().slice(0, 10)}
           retakeHref={retakeHref}
+          allAttemptsHref={allAttemptsHref}
         />
 
         <div className="space-y-6 mt-6">

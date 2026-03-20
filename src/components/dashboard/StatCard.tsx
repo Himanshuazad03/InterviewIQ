@@ -11,7 +11,7 @@ interface StatCardProps {
   };
 }
 
-export function StatCard({ title, value, icon: Icon, trend }: StatCardProps) {
+export function StatCard({ title, value = "--", icon: Icon, trend }: StatCardProps) {
   return (
     <Card className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#0f0f17] to-[#0a0a12] backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-black/40">
 
