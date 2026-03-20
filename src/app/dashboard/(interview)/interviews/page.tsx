@@ -8,10 +8,7 @@ import {
   Trophy,
   Plus,
   TrendingDown,
-  History,
-  ArrowRight,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import InterviewForm from "@/components/interviewDash/InterviewForm";
@@ -20,6 +17,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import AllInterview from "@/components/interviewDash/AllInterviews";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
+import { RecentActivity } from "@/components/interviewDash/RecentActivity";
 
 import { Suspense } from "react";
 import Skeleton from "@/components/dashboard/Skeleton";
@@ -116,6 +114,7 @@ export default async function InterviewsPage() {
                 value={averageScore}
                 icon={Trophy}
                 trend={trend}
+                totalInterviews={totalInterviews}
               />
               <StatCard
                 title="Highest Score"
@@ -141,70 +140,7 @@ export default async function InterviewsPage() {
 
             {/* Right: Recent Attempts Table / Cards */}
             <div className="lg:col-span-1">
-              {recentAttempts && recentAttempts.length > 0 && (
-                <Reveal delay={0.15}>
-                  <div className="h-full flex flex-col">
-                    <Card className="bg-[#111116] border-[#27272A] shadow-sm flex flex-col rounded-2xl flex-1">
-                      <div className="px-5">
-                        <h3 className="text-lg font-bold text-white">
-                          Recent Activity
-                        </h3>
-                      </div>
-                      <CardContent className="p-0 sm:p-2 sm:px-4">
-                        <div className="flex flex-col">
-                          {recentAttempts.map((attempt) => {
-                            const date = new Date(
-                              attempt.createdAt,
-                            ).toLocaleDateString("en-US", {
-                              month: "short",
-                              day: "numeric",
-                            });
-
-                            // Pick a color based on score
-                            const isGood = attempt.score >= 70;
-                            const scoreColor = isGood
-                              ? "text-emerald-400"
-                              : attempt.score >= 40
-                                ? "text-amber-400"
-                                : "text-rose-400";
-
-                            return (
-                              <Link
-                                key={attempt.id}
-                                href={`/dashboard/interview/${attempt.interviewId}/attempts/feedback/${attempt.id}`}
-                                className="flex flex-col gap-0.5 pb-3 border-b border-slate-800/60 hover:bg-slate-800/20 p-3 rounded-xl transition-colors group cursor-pointer last:border-0"
-                              >
-                                <div className="flex justify-between items-start mb-1">
-                                  <span className="text-sm font-medium text-slate-200 group-hover:text-indigo-400 transition-colors">
-                                    {attempt.interview?.jobRole}
-                                  </span>
-                                  <span className="text-xs text-slate-400 whitespace-nowrap ml-2 bg-slate-800/50 px-2 py-0.5 rounded-md">
-                                    {date}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between items-center w-full">
-                                  <div className="flex items-center gap-2 text-sm text-slate-400">
-                                    <Target className="w-3.5 h-3.5" /> Score:{" "}
-                                    <span
-                                      className={`font-semibold text-sm ${scoreColor}`}
-                                    >
-                                      {attempt.score}
-                                    </span>
-                                  </div>
-                                  <span className="text-xs text-indigo-500/0 group-hover:text-indigo-500 transition-all flex items-center font-medium">
-                                    View{" "}
-                                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                                  </span>
-                                </div>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </Reveal>
-              )}
+              <RecentActivity attempts={recentAttempts || []} />
             </div>
           </div>
 
